@@ -1,25 +1,26 @@
 class JqgridGrailsPlugin {
     // the plugin version
-    def version = "0.1"
+    def version = "1.0-SNAPSHOT"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.3 > *"
     // the other plugins this plugin depends on
-    def dependsOn = [:]
+    def dependsOn = ['jqueryUi': "1.8.2.4 > *"]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-            "grails-app/views/error.gsp"
+            "grails-app/views/error.gsp",
+            "**/.gitignore"
     ]
 
     // TODO Fill in these fields
-    def author = "Your name"
-    def authorEmail = ""
+    def author = "Aaron Oathout"
+    def authorEmail = "aoathout@gmail.com"
     def title = "Plugin summary/headline"
     def description = '''\\
 Brief description of the plugin.
 '''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/jqgrid"
+    def documentation = "http://aoathout.github.com/grails-jqgrid"
 
     def doWithWebDescriptor = { xml ->
         // TODO Implement additions to web.xml (optional), this event occurs before 

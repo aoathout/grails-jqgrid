@@ -2,7 +2,7 @@ package jqgrid.demo
 
 import grails.test.*
 
-class DemoControllerTests extends ControllerUnitTestCase {
+class BookControllerTests extends ControllerUnitTestCase {
     protected void setUp() {
         super.setUp()
     }

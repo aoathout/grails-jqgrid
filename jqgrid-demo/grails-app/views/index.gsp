@@ -49,9 +49,6 @@
             margin-right:20px;
         }
         </style>
-        <g:javascript library="jquery" plugin="jquery" />
-        <jqui:resources />
-        <jqgrid:resources />
     </head>
     <body>
         <div id="nav">

@@ -1,0 +1,15 @@
+.gridWrapper {
+    overflow: auto;
+    width: 100%;
+}
+
+.gridTable {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.gridPager {
+    text-align:center;
+}
+

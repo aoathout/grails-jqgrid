@@ -1,6 +1,6 @@
 class JqgridGrailsPlugin {
-    // the plugin version
-    def version = "1.0-SNAPSHOT"
+    // the plugin version (Relates to version of jqgrid being used)
+    def version = "3.7.2-SNAPSHOT"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.3 > *"
     // the other plugins this plugin depends on
@@ -14,9 +14,9 @@ class JqgridGrailsPlugin {
     // TODO Fill in these fields
     def author = "Aaron Oathout"
     def authorEmail = "aoathout@gmail.com"
-    def title = "Plugin summary/headline"
+    def title = "Grails JQGrid Plugin"
     def description = '''\\
-Brief description of the plugin.
+This plugin provides easy integration with the jqgrid jquery library.
 '''
 
     // URL to the plugin's documentation

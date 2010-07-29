@@ -29,6 +29,7 @@ class JQGridTagLib {
     /**
      * Generates the required javascript and html for jqGrid
      * -- attrs.id : The id of the wrapper, grid and pager
+     * -- attrs.createHolder : Create the wrapper, table and pager html elements.
      * -- attrs.resizeOffset : The offset to use for grid resize
      * -- attrs.listUrl : The url that will provide the list data
      * -- attrs.editUrl : The url that will process an edit/add/delete
@@ -55,6 +56,7 @@ class JQGridTagLib {
      */
     def grid = { attrs ->
         def id              = attrs.remove('id') ?: 'grid'
+        def createHolder    = attrs.remove('createHolder') ?: true
         def caption         = attrs.remove('caption') ?: ''
         def hideGrid        = attrs.remove('hideGrid') ?: true
         def resizeOffset    = attrs.remove('resizeOffset') ?: -2
@@ -79,12 +81,16 @@ class JQGridTagLib {
 
         def cellEdit        = attrs.remove('cellEdit') ?: false
 
+        // Listeners
+        def onDblClickRow   = attrs.remove('onDblClickRow')
 
         // Write out the table
-        out << """<div id="${id}Wrapper" class="ui-widget-header ui-corner-all">\n
-                        <table id="${id}Grid" class="scroll jqTable"></table>\n
-                        <div id="${id}GridPager" class="scroll"></div>\n
-                  </div>\n"""
+        if (createHolder.toBoolean()) {
+            out << """<div id="${id}Wrapper" class="ui-widget-header ui-corner-all">\n
+                            <table id="${id}Grid" class="scroll jqTable"></table>\n
+                            <div id="${id}GridPager" class="scroll"></div>\n
+                      </div>\n"""
+        }
 
         // Write opening script tag
         out << """<script type="text/javascript">\n"""
@@ -111,19 +117,37 @@ class JQGridTagLib {
                          height: ${height},
                          rowNum: ${rowNum},
                          rowList: ${rowList},
-                         viewrecords: ${viewRecords},
-                         gridview: ${gridView},
-                         cellEdit: ${cellEdit},
+                         viewrecords: ${viewRecords.toBoolean()},
+                         gridview: ${gridView.toBoolean()},
+                         cellEdit: ${cellEdit.toBoolean()},
                          caption: '${caption}',
-                         hidegrid: ${hideGrid},
-                         pager: jQuery('#${id}GridPager')
-                      });\n"""
+                         hidegrid: ${hideGrid.toBoolean()},
+                         pager: jQuery('#${id}GridPager')"""
+
+        // Handlers
+        if (onDblClickRow) {
+            out << """,\nondblClickRow: ${onDblClickRow}"""
+        }
+        
+        // End jqgrid script
+        out << """});\n"""
+
+        // Navigation Bar
+        // Navigation Bar
+        out << """\$('#${id}Grid').navGrid('#${id}GridPager', {
+                        add: true,
+                        edit: true,
+                        del: true,
+                        search: true,
+                        refresh: true
+                    });"""
+
 
         // Deal with fiter toolbar if requested
-        if (filterToolBar) {
+        if (filterToolBar.toBoolean()) {
             out << """\$('#${id}Grid').filterToolbar({
                             autosearch: true,
-                            searchOnEnter: ${searchOnEnter}
+                            searchOnEnter: ${searchOnEnter.toBoolean()}
                         });"""
         }
 

@@ -4,12 +4,60 @@ import grails.converters.JSON
 
 class AuthorController {
 
+    def messageSource
+    
     def scaffold = true
     
     def defaultAction = "list"
 
     def editJSON = {
+        def result
+        def message = ""
+        def state = "FAIL"
+        def id
 
+        // determine our action. Grid will pass a param called "oper"
+        switch (params.oper) {
+            // Delete Request
+            case 'del':
+                result = Author.get(params.id)
+                if (result) {
+                    result.delete()
+                    message = "Author '${result.firstName} ${result.lastName}' Deleted"
+                    state = "OK"
+                }
+                break;
+            // Add Request
+            case 'add':
+                result = new Author(params)
+                break;
+            // Edit Request
+            case 'edit':
+                // add or edit instruction sent
+                result = Author.get(params.id)
+                result.properties = params
+                break;
+        }
+
+        // If we aren't deleting the object then we need to validate and save.
+        // Capture any validation messages to display on the client side
+        if (result && params.oper != "del") {
+            if (!result.hasErrors() && result.save(flush: true)) {
+                message = "Author  '${result.firstName} ${result.lastName}' " + (params.oper == 'add') ? "Added" : "Updated"
+                id = result.id
+                state = "OK"
+            } else {
+                message = "<ul>"
+                result.errors.allErrors.each {
+                    message += "<li>${messageSource.getMessage(it)}</li>"
+                }
+                message += "</ul>"
+            }
+        }
+
+        //render [message:message, state:state, id:id] as JSON
+        def jsonData = [messsage: message, state: state, id: id]
+        render jsonData as JSON
     }
 
     def listJSON = {

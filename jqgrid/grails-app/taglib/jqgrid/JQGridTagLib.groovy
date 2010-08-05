@@ -8,23 +8,7 @@ class JQGridTagLib {
      * Include CSS and JavaScript resources in head.
      */
     def resources = { attrs, body ->
-//        // Send the css
-//        def href = createLinkTo(dir: "${pluginContextPath}/css/jqgrid", file: 'ui.jqgrid.css')
-//        out << """<link rel="stylesheet" href="${href}" type="text/css" media="screen" />\n"""
-//
-//        // Send the jqgrid lables, etc
-//        // TODO: Grab the correct locale file, don't just default
-//        href = createLinkTo(dir: "${pluginContextPath}/js/jqgrid/i18n", file: 'grid.locale-en.js')
-//        out << """<script type="text/javascript" src="${href}"></script>\n"""
-//
-//        // Send the jqgrid code
-//        href = createLinkTo(dir: "${pluginContextPath}/js/jqgrid", file: 'jquery.jqGrid.min.js')
-//        out << """<script type="text/javascript" src="${href}"></script>\n"""
-//
-//        // Send the jqgrid fluid code
-//        href = createLinkTo(dir: "${pluginContextPath}/js/jqgrid", file: 'jquery.jqGrid.fluid.js')
-//        out << """<script type="text/javascript" src="${href}"></script>\n"""
-          out << render(template:"${pluginContextPath}/grails-app/views/templates/resources", model:[attrs:attrs])
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/resources")
     }
 
     /**
@@ -56,96 +40,35 @@ class JQGridTagLib {
      *                     Check the jqgrid documentation for details
      */
     def grid = { attrs, body ->
-        attrs.createHolder    = attrs.createHolder ?: true
-        attrs.caption         = attrs.caption ?: ''
-        attrs.hideGrid        = attrs.hideGrid ?: true
-        attrs.resizeOffset    = attrs.resizeOffset ?: -2
-        attrs.dataType        = attrs.dataType ?: 'json'
-        attrs.sortName        = attrs.sortName ?: 'id'
-        attrs.sortOrder       = attrs.sortOrder ?: 'asc'
-        attrs.scrollOffset    = attrs.scrollOffset ?: 0
-        attrs.height          = attrs.height ?: 300
-        attrs.rowNum          = attrs.rowNum ?: 25
-        attrs.rowList         = attrs.rowList ?: [25, 50, 75, 100]
-        attrs.viewRecords     = attrs.viewRecords ?: true
-        attrs.gridView        = attrs.gridView ?: true
-
-        attrs.listUrl         = attrs.listUrl ?: 'No Url Specified'
-        attrs.editUrl         = attrs.editUrl ?: 'No Url Specified'
-
-        attrs.colNames        = attrs.colNames ?: "'id'"
-        attrs.colModel        = attrs.colModel ?: '{name:"id"}'
-
-        attrs.filterToolBar   = attrs.filterToolBar ?: false
-        attrs.searchOnEnter   = attrs.searchOnEnter ?: true
-
-        attrs.cellEdit        = attrs.cellEdit ?: false
-
-        // Listeners
-//        attrs.onDblClickRow   = attrs.onDblClickRow
+        // Set default values
+        def gridVals = [:]
+        gridVals.createHolder    = attrs.remove('createHolder') ?: true
+        gridVals.caption         = attrs.remove('caption') ?: ''
+        gridVals.hideGrid        = attrs.remove('hideGrid') ?: true
+        gridVals.resizeOffset    = attrs.remove('resizeOffset') ?: -2
+        gridVals.dataType        = attrs.remove('dataType') ?: 'json'
+        gridVals.sortName        = attrs.remove('sortName') ?: 'id'
+        gridVals.sortOrder       = attrs.remove('sortOrder') ?: 'asc'
+        gridVals.scrollOffset    = attrs.remove('scrollOffset') ?: 0
+        gridVals.height          = attrs.remove('height') ?: 300
+        gridVals.rowNum          = attrs.remove('rowNum') ?: 25
+        gridVals.rowList         = attrs.remove('rowList') ?: [25, 50, 75, 100]
+        gridVals.viewRecords     = attrs.remove('viewRecords') ?: true
+        gridVals.gridView        = attrs.remove('gridView') ?: true
+        gridVals.listUrl         = attrs.remove('listUrl') ?: 'No Url Specified'
+        gridVals.editUrl         = attrs.remove('editUrl') ?: 'No Url Specified'
+        gridVals.colNames        = attrs.remove('colNames') ?: "'id'"
+        gridVals.colModel        = attrs.remove('colModel') ?: '{name:"id"}'
+        gridVals.filterToolBar   = attrs.remove('filterToolBar') ?: false
+        gridVals.searchOnEnter   = attrs.remove('searchOnEnter') ?: true
+        gridVals.cellEdit        = attrs.remove('cellEdit') ?: false
 
         // Write out the table
-        if (attrs.createHolder.toBoolean()) {
-            out << render(template:"${pluginContextPath}/grails-app/views/templates/gridWrapper", model:[attrs:attrs])
+        if (gridVals.createHolder.toBoolean()) {
+            out << render(template:"${pluginContextPath}/grails-app/views/templates/gridWrapper", model:[gridVals:gridVals])
         }
 
-        // Write opening script tag
-        out << """<script type="text/javascript">\n"""
-
-        // Write the jqgrid script
-        out << """\$(document).ready(function () {
-                      jQuery("#${attrs.id}Grid").jqGrid({
-                         url: '${attrs.listUrl}',
-                         editurl: '${attrs.editUrl}',
-                         colNames: [${attrs.colNames}],
-                         colModel: [${attrs.colModel}],
-                         datatype: '${attrs.dataType}',
-                         autowidth: true,
-                         sortname: '${attrs.sortName}',
-                         sortorder: '${attrs.sortOrder}',
-                         scrollOffset: ${attrs.scrollOffset},
-                         height: ${attrs.height},
-                         rowNum: ${attrs.rowNum},
-                         rowList: ${attrs.rowList},
-                         viewrecords: ${attrs.viewRecords.toBoolean()},
-                         gridview: ${attrs.gridView.toBoolean()},
-                         cellEdit: ${attrs.cellEdit.toBoolean()},
-                         caption: '${attrs.caption}',
-                         hidegrid: ${attrs.hideGrid.toBoolean()},
-                         pager: jQuery('#${attrs.id}GridPager')"""
-
-        // Handlers
-        if (attrs.onDblClickRow) {
-            out << """,\nondblClickRow: ${attrs.onDblClickRow}"""
-        }
-        
-        // End jqgrid script
-        out << """});\n"""
-
-        // Navigation Bar
-        out << """\$('#${attrs.id}Grid').navGrid('#${attrs.id}GridPager', {
-                        add: true,
-                        edit: true,
-                        del: true,
-                        search: true,
-                        refresh: true
-                    });"""
-
-
-        // Deal with fiter toolbar if requested
-        // TODO: Use g:if tag in a template for this since we don't want a
-        //       separate template just to close document.ready
-        if (attrs.filterToolBar.toBoolean()) {
-            out << render(template:"${pluginContextPath}/grails-app/views/templates/filterToolBar", model:[attrs:attrs])
-        }
-
-        // End document.ready
-        out << """});\n"""
-
-        // Resize the grid when the browser is resized
-        out << render(template:"${pluginContextPath}/grails-app/views/templates/resize", model:[attrs:attrs])
-
-        // Write closing script tag
-        out << """</script>\n"""
+        // Write out the grid javascript
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/grid", model:[gridVals:gridVals])
     }
 }

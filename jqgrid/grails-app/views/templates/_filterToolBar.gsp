@@ -1,4 +1,4 @@
-$('#${attrs.id}Grid').filterToolbar({
+$('#${gridVals.id}Grid').filterToolbar({
     autosearch: true,
-    searchOnEnter: ${attrs.searchOnEnter}
+    searchOnEnter: ${gridVals.searchOnEnter}
 });

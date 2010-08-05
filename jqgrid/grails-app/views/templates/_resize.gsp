@@ -1,6 +1,6 @@
-function resize_${attrs.id}_grid() {
-  $('#${attrs.id}Grid').fluidGrid({
-      base:'#${attrs.id}Wrapper',
-      offset: ${attrs.resizeOffset}
+function resize_${gridVals.id}_grid() {
+  $('#${gridVals.id}Grid').fluidGrid({
+      base:'#${gridVals.id}Wrapper',
+      offset: ${gridVals.resizeOffset}
 })};
-$(window).resize(resize_${attrs.id}_grid);
+$(window).resize(resize_${gridVals.id}_grid);

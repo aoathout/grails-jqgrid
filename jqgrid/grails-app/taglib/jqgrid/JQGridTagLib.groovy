@@ -7,23 +7,24 @@ class JQGridTagLib {
     /**
      * Include CSS and JavaScript resources in head.
      */
-    def resources = { attrs ->
-        // Send the css
-        def href = createLinkTo(dir: "${pluginContextPath}/css/jqgrid", file: 'ui.jqgrid.css')
-        out << """<link rel="stylesheet" href="${href}" type="text/css" media="screen" />\n"""
-        
-        // Send the jqgrid lables, etc
-        // TODO: Grab the correct locale file, don't just default
-        href = createLinkTo(dir: "${pluginContextPath}/js/jqgrid/i18n", file: 'grid.locale-en.js')
-        out << """<script type="text/javascript" src="${href}"></script>\n"""
-
-        // Send the jqgrid code
-        href = createLinkTo(dir: "${pluginContextPath}/js/jqgrid", file: 'jquery.jqGrid.min.js')
-        out << """<script type="text/javascript" src="${href}"></script>\n"""
-
-        // Send the jqgrid fluid code
-        href = createLinkTo(dir: "${pluginContextPath}/js/jqgrid", file: 'jquery.jqGrid.fluid.js')
-        out << """<script type="text/javascript" src="${href}"></script>\n"""
+    def resources = { attrs, body ->
+//        // Send the css
+//        def href = createLinkTo(dir: "${pluginContextPath}/css/jqgrid", file: 'ui.jqgrid.css')
+//        out << """<link rel="stylesheet" href="${href}" type="text/css" media="screen" />\n"""
+//
+//        // Send the jqgrid lables, etc
+//        // TODO: Grab the correct locale file, don't just default
+//        href = createLinkTo(dir: "${pluginContextPath}/js/jqgrid/i18n", file: 'grid.locale-en.js')
+//        out << """<script type="text/javascript" src="${href}"></script>\n"""
+//
+//        // Send the jqgrid code
+//        href = createLinkTo(dir: "${pluginContextPath}/js/jqgrid", file: 'jquery.jqGrid.min.js')
+//        out << """<script type="text/javascript" src="${href}"></script>\n"""
+//
+//        // Send the jqgrid fluid code
+//        href = createLinkTo(dir: "${pluginContextPath}/js/jqgrid", file: 'jquery.jqGrid.fluid.js')
+//        out << """<script type="text/javascript" src="${href}"></script>\n"""
+          out << render(template:"${pluginContextPath}/grails-app/views/templates/resources", model:[attrs:attrs])
     }
 
     /**
@@ -54,9 +55,8 @@ class JQGridTagLib {
      * -- attrs.gridView : true to use speed improvement, there are some limitations
      *                     Check the jqgrid documentation for details
      */
-    def grid = { attrs ->
-        def id              = attrs.remove('id') ?: 'grid'
-        def createHolder    = attrs.remove('createHolder') ?: true
+    def grid = { attrs, body ->
+        attrs.createHolder    = attrs.createHolder ?: true
         def caption         = attrs.remove('caption') ?: ''
         def hideGrid        = attrs.remove('hideGrid') ?: true
         def resizeOffset    = attrs.remove('resizeOffset') ?: -2
@@ -76,8 +76,8 @@ class JQGridTagLib {
         def colNames        = attrs.remove('colNames') ?: "'id'"
         def colModel        = attrs.remove('colModel') ?: '{name:"id"}'
 
-        def filterToolBar   = attrs.remove('filterToolBar') ?: false
-        def searchOnEnter   = attrs.remove('filterToolBarSearchOnEnter') ?: true
+        attrs.filterToolBar   = attrs.filterToolBar ?: false
+        attrs.searchOnEnter   = attrs.searchOnEnter ?: true
 
         def cellEdit        = attrs.remove('cellEdit') ?: false
 
@@ -85,11 +85,8 @@ class JQGridTagLib {
         def onDblClickRow   = attrs.remove('onDblClickRow')
 
         // Write out the table
-        if (createHolder.toBoolean()) {
-            out << """<div id="${id}Wrapper" class="ui-widget-header ui-corner-all">\n
-                            <table id="${id}Grid" class="scroll jqTable"></table>\n
-                            <div id="${id}GridPager" class="scroll"></div>\n
-                      </div>\n"""
+        if (attrs.createHolder.toBoolean()) {
+            out << render(template:"${pluginContextPath}/grails-app/views/templates/gridWrapper", model:[attrs:attrs])
         }
 
         // Write opening script tag
@@ -97,14 +94,14 @@ class JQGridTagLib {
 
         // Write resize function
         out << """function resize_${id}_grid() {
-                        \$('#${id}Grid').fluidGrid({
-                            base:'#${id}Wrapper',
+                        \$('#${attrs.id}Grid').fluidGrid({
+                            base:'#${attrs.id}Wrapper',
                             offset: ${resizeOffset}
                   })};\n"""
 
         // Write the jqgrid script
         out << """\$(document).ready(function () {
-                      jQuery("#${id}Grid").jqGrid({
+                      jQuery("#${attrs.id}Grid").jqGrid({
                          url: '${listUrl}',
                          editurl: '${editUrl}',
                          colNames: [${colNames}],
@@ -122,7 +119,7 @@ class JQGridTagLib {
                          cellEdit: ${cellEdit.toBoolean()},
                          caption: '${caption}',
                          hidegrid: ${hideGrid.toBoolean()},
-                         pager: jQuery('#${id}GridPager')"""
+                         pager: jQuery('#${attrs.id}GridPager')"""
 
         // Handlers
         if (onDblClickRow) {
@@ -133,8 +130,7 @@ class JQGridTagLib {
         out << """});\n"""
 
         // Navigation Bar
-        // Navigation Bar
-        out << """\$('#${id}Grid').navGrid('#${id}GridPager', {
+        out << """\$('#${attrs.id}Grid').navGrid('#${attrs.id}GridPager', {
                         add: true,
                         edit: true,
                         del: true,
@@ -144,18 +140,15 @@ class JQGridTagLib {
 
 
         // Deal with fiter toolbar if requested
-        if (filterToolBar.toBoolean()) {
-            out << """\$('#${id}Grid').filterToolbar({
-                            autosearch: true,
-                            searchOnEnter: ${searchOnEnter.toBoolean()}
-                        });"""
+        if (attrs.filterToolBar.toBoolean()) {
+            out << render(template:"${pluginContextPath}/grails-app/views/templates/filterToolBar", model:[attrs:attrs])
         }
 
         // End document.ready
         out << """});\n"""
 
         // Resize the grid when the browser is resized
-        out << """\$(window).resize(resize_${id}_grid);"""
+        out << """\$(window).resize(resize_${attrs.id}_grid);"""
 
         // Write closing script tag
         out << """</script>\n"""

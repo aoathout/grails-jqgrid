@@ -43,7 +43,6 @@
                 caption="Author List"
                 height="300"
                 filterToolBar="true"
-                searchOnEnter="false"
                 onDblClickRow="onDblClickRow" />
         </div>
     </body>

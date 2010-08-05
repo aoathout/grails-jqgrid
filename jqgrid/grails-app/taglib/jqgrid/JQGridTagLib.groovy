@@ -57,32 +57,32 @@ class JQGridTagLib {
      */
     def grid = { attrs, body ->
         attrs.createHolder    = attrs.createHolder ?: true
-        def caption         = attrs.remove('caption') ?: ''
-        def hideGrid        = attrs.remove('hideGrid') ?: true
-        def resizeOffset    = attrs.remove('resizeOffset') ?: -2
-        def dataType        = attrs.remove('dataType') ?: 'json'
-        def sortName        = attrs.remove('sortName') ?: 'id'
-        def sortOrder       = attrs.remove('sortOrder') ?: 'asc'
-        def scrollOffset    = attrs.remove('scrollOffset') ?: 0
-        def height          = attrs.remove('height') ?: 300
-        def rowNum          = attrs.remove('rowNum') ?: 25
-        def rowList         = attrs.remove('rowList') ?: [25, 50, 75, 100]
-        def viewRecords     = attrs.remove('viewRecords') ?: true
-        def gridView        = attrs.remove('gridView') ?: true
+        attrs.caption         = attrs.caption ?: ''
+        attrs.hideGrid        = attrs.hideGrid ?: true
+        attrs.resizeOffset    = attrs.resizeOffset ?: -2
+        attrs.dataType        = attrs.dataType ?: 'json'
+        attrs.sortName        = attrs.sortName ?: 'id'
+        attrs.sortOrder       = attrs.sortOrder ?: 'asc'
+        attrs.scrollOffset    = attrs.scrollOffset ?: 0
+        attrs.height          = attrs.height ?: 300
+        attrs.rowNum          = attrs.rowNum ?: 25
+        attrs.rowList         = attrs.rowList ?: [25, 50, 75, 100]
+        attrs.viewRecords     = attrs.viewRecords ?: true
+        attrs.gridView        = attrs.gridView ?: true
 
-        def listUrl         = attrs.remove('listUrl') ?: 'No Url Specified'
-        def editUrl         = attrs.remove('editUrl') ?: 'No Url Specified'
+        attrs.listUrl         = attrs.listUrl ?: 'No Url Specified'
+        attrs.editUrl         = attrs.editUrl ?: 'No Url Specified'
 
-        def colNames        = attrs.remove('colNames') ?: "'id'"
-        def colModel        = attrs.remove('colModel') ?: '{name:"id"}'
+        attrs.colNames        = attrs.colNames ?: "'id'"
+        attrs.colModel        = attrs.colModel ?: '{name:"id"}'
 
         attrs.filterToolBar   = attrs.filterToolBar ?: false
         attrs.searchOnEnter   = attrs.searchOnEnter ?: true
 
-        def cellEdit        = attrs.remove('cellEdit') ?: false
+        attrs.cellEdit        = attrs.cellEdit ?: false
 
         // Listeners
-        def onDblClickRow   = attrs.remove('onDblClickRow')
+//        attrs.onDblClickRow   = attrs.onDblClickRow
 
         // Write out the table
         if (attrs.createHolder.toBoolean()) {
@@ -92,38 +92,31 @@ class JQGridTagLib {
         // Write opening script tag
         out << """<script type="text/javascript">\n"""
 
-        // Write resize function
-        out << """function resize_${id}_grid() {
-                        \$('#${attrs.id}Grid').fluidGrid({
-                            base:'#${attrs.id}Wrapper',
-                            offset: ${resizeOffset}
-                  })};\n"""
-
         // Write the jqgrid script
         out << """\$(document).ready(function () {
                       jQuery("#${attrs.id}Grid").jqGrid({
-                         url: '${listUrl}',
-                         editurl: '${editUrl}',
-                         colNames: [${colNames}],
-                         colModel: [${colModel}],
-                         datatype: '${dataType}',
+                         url: '${attrs.listUrl}',
+                         editurl: '${attrs.editUrl}',
+                         colNames: [${attrs.colNames}],
+                         colModel: [${attrs.colModel}],
+                         datatype: '${attrs.dataType}',
                          autowidth: true,
-                         sortname: '${sortName}',
-                         sortorder: '${sortOrder}',
-                         scrollOffset: ${scrollOffset},
-                         height: ${height},
-                         rowNum: ${rowNum},
-                         rowList: ${rowList},
-                         viewrecords: ${viewRecords.toBoolean()},
-                         gridview: ${gridView.toBoolean()},
-                         cellEdit: ${cellEdit.toBoolean()},
-                         caption: '${caption}',
-                         hidegrid: ${hideGrid.toBoolean()},
+                         sortname: '${attrs.sortName}',
+                         sortorder: '${attrs.sortOrder}',
+                         scrollOffset: ${attrs.scrollOffset},
+                         height: ${attrs.height},
+                         rowNum: ${attrs.rowNum},
+                         rowList: ${attrs.rowList},
+                         viewrecords: ${attrs.viewRecords.toBoolean()},
+                         gridview: ${attrs.gridView.toBoolean()},
+                         cellEdit: ${attrs.cellEdit.toBoolean()},
+                         caption: '${attrs.caption}',
+                         hidegrid: ${attrs.hideGrid.toBoolean()},
                          pager: jQuery('#${attrs.id}GridPager')"""
 
         // Handlers
-        if (onDblClickRow) {
-            out << """,\nondblClickRow: ${onDblClickRow}"""
+        if (attrs.onDblClickRow) {
+            out << """,\nondblClickRow: ${attrs.onDblClickRow}"""
         }
         
         // End jqgrid script
@@ -140,6 +133,8 @@ class JQGridTagLib {
 
 
         // Deal with fiter toolbar if requested
+        // TODO: Use g:if tag in a template for this since we don't want a
+        //       separate template just to close document.ready
         if (attrs.filterToolBar.toBoolean()) {
             out << render(template:"${pluginContextPath}/grails-app/views/templates/filterToolBar", model:[attrs:attrs])
         }
@@ -148,7 +143,7 @@ class JQGridTagLib {
         out << """});\n"""
 
         // Resize the grid when the browser is resized
-        out << """\$(window).resize(resize_${attrs.id}_grid);"""
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/resize", model:[attrs:attrs])
 
         // Write closing script tag
         out << """</script>\n"""

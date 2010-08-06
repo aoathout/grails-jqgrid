@@ -43,7 +43,11 @@
                 caption="Author List"
                 height="300"
                 filterToolBar="true"
-                onDblClickRow="onDblClickRow" />
+                onDblClickRow="onDblClickRow"
+                add="true"
+                edit="true"
+                search="true"
+                delete="true"/>
         </div>
     </body>
 </html>

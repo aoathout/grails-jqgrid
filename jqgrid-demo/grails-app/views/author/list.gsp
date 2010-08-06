@@ -44,10 +44,23 @@
                 height="300"
                 filterToolBar="true"
                 onDblClickRow="onDblClickRow"
-                add="true"
-                edit="true"
-                search="true"
-                delete="true"/>
+                deleteButton="true">
+
+                <jqgrid:deleteButton
+                    id="author"
+                    url="${createLink(action: 'editJSON')}" />
+
+                <jqgrid:editButton
+                    id="author"
+                    url="${createLink(action: 'edit')}" />
+
+                <jqgrid:addButton
+                    id="author"
+                    url="${createLink(action: 'create')}" />
+
+                <jqgrid:searchButton id="author" />
+                
+            </jqgrid:grid>
         </div>
     </body>
 </html>

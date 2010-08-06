@@ -41,7 +41,7 @@ class JQGridTagLib {
      */
     def grid = { attrs, body ->
         // Set default values
-        def gridVals = [:]
+        def gridVals = attrs
         gridVals.createHolder    = attrs.remove('createHolder') ?: true
         gridVals.caption         = attrs.remove('caption') ?: ''
         gridVals.hideGrid        = attrs.remove('hideGrid') ?: true
@@ -64,11 +64,11 @@ class JQGridTagLib {
         gridVals.cellEdit        = attrs.remove('cellEdit') ?: false
 
         // Standard grid nav bar buttons
-        gridVals.add             = attrs.remove('add') ?: false
-        gridVals.edit            = attrs.remove('edit') ?: false
-        gridVals.delete          = attrs.remove('delete') ?: false
-        gridVals.search          = attrs.remove('search') ?: false
-        gridVals.refresh         = attrs.remove('refresh') ?: true
+        gridVals.standardAddButton     = attrs.remove('standardAddButton') ?: false
+        gridVals.standardEditButton    = attrs.remove('standardEditButton') ?: false
+        gridVals.standardDeleteButton  = attrs.remove('standardDeleteButton') ?: false
+        gridVals.standardSearchButton  = attrs.remove('standardSearchButton') ?: false
+        gridVals.standardRefreshButton = attrs.remove('standardRefreshButton') ?: true
 
         // Write out the table
         if (gridVals.createHolder.toBoolean()) {
@@ -76,22 +76,30 @@ class JQGridTagLib {
         }
 
         // Write out the grid javascript
-        out << render(template:"${pluginContextPath}/grails-app/views/templates/grid", model:[gridVals:gridVals])
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/grid", model:[gridVals:gridVals, body:body])
     }
 
-    def addButton = {
-
+    def addButton = {attrs, body ->
+        def gridVals = attrs
+        gridVals.url = attrs.remove('url') ?: 'No Url Specified'
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/addButton", model:[gridVals:gridVals])
     }
 
-    def editButton = {
-
+    def editButton = {attrs, body ->
+        def gridVals = attrs
+        gridVals.url = attrs.remove('url') ?: 'No Url Specified'
+        gridVals.messageId = attrs.remove('messageId') ?: 'message'
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/editButton", model:[gridVals:gridVals])
     }
 
-    def searchButton = {
-
+    def searchButton = {attrs, body ->
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/searchButton", model:[gridVals:attrs])
     }
 
-    def deleteButton = {
-
+    def deleteButton = {attrs, body ->
+        def gridVals = attrs
+        gridVals.url = attrs.remove('url') ?: 'No Url Specified'
+        gridVals.messageId = attrs.remove('messageId') ?: 'message'
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/deleteButton", model:[gridVals:gridVals])
     }
 }

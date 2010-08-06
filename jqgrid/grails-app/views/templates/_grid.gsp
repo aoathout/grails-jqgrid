@@ -18,12 +18,12 @@
                gridview: ${gridVals.gridView.toBoolean()},
                cellEdit: ${gridVals.cellEdit.toBoolean()},
                caption: '${gridVals.caption}',
-               hidegrid: ${gridVals.hideGrid.toBoolean()},
+               hidegrid: ${gridVals.hideGrid},
                pager: jQuery('#${gridVals.id}GridPager')
 
           // Handlers
           <g:if test="${gridVals.onDblClickRow}">
-               ondblClickRow: ${gridVals.onDblClickRow}
+               ,ondblClickRow: ${gridVals.onDblClickRow}
           </g:if>
 
         // End jqgrid script
@@ -31,11 +31,11 @@
 
         // Navigation Bar
         $('#${gridVals.id}Grid').navGrid('#${gridVals.id}GridPager', {
-            add: ${gridVals.add},
-            edit: ${gridVals.edit},
-            del: ${gridVals.delete},
-            search: ${gridVals.search},
-            refresh: true
+            add: ${gridVals.standardAddButton},
+            edit: ${gridVals.standardEditButton},
+            del: ${gridVals.standardDeleteButton},
+            search: ${gridVals.standardSearchButton},
+            refresh: ${gridVals.standardRefreshButton}
         });
 
         // Deal with fiter toolbar if requested

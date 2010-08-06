@@ -31,10 +31,10 @@
 
         // Navigation Bar
         $('#${gridVals.id}Grid').navGrid('#${gridVals.id}GridPager', {
-            add: true,
-            edit: true,
-            del: true,
-            search: true,
+            add: ${gridVals.add},
+            edit: ${gridVals.edit},
+            del: ${gridVals.delete},
+            search: ${gridVals.search},
             refresh: true
         });
 

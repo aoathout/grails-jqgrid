@@ -63,6 +63,13 @@ class JQGridTagLib {
         gridVals.searchOnEnter   = attrs.remove('searchOnEnter') ?: true
         gridVals.cellEdit        = attrs.remove('cellEdit') ?: false
 
+        // Standard grid nav bar buttons
+        gridVals.add             = attrs.remove('add') ?: false
+        gridVals.edit            = attrs.remove('edit') ?: false
+        gridVals.delete          = attrs.remove('delete') ?: false
+        gridVals.search          = attrs.remove('search') ?: false
+        gridVals.refresh         = attrs.remove('refresh') ?: true
+
         // Write out the table
         if (gridVals.createHolder.toBoolean()) {
             out << render(template:"${pluginContextPath}/grails-app/views/templates/gridWrapper", model:[gridVals:gridVals])
@@ -70,5 +77,21 @@ class JQGridTagLib {
 
         // Write out the grid javascript
         out << render(template:"${pluginContextPath}/grails-app/views/templates/grid", model:[gridVals:gridVals])
+    }
+
+    def addButton = {
+
+    }
+
+    def editButton = {
+
+    }
+
+    def searchButton = {
+
+    }
+
+    def deleteButton = {
+
     }
 }

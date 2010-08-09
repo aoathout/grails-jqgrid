@@ -3,7 +3,21 @@ package jqgrid
 class JQGridTagLib {
 
     static namespace = "jqgrid"
-    
+
+    /**
+     * Include CSS.
+     */
+    def cssResources = { attrs, body ->
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/cssResources")
+    }
+
+    /**
+     * Include JavaScript.
+     */
+    def scriptResources = { attrs, body ->
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/scriptResources")
+    }
+
     /**
      * Include CSS and JavaScript resources in head.
      */
@@ -11,6 +25,9 @@ class JQGridTagLib {
         out << render(template:"${pluginContextPath}/grails-app/views/templates/resources")
     }
 
+    def wrapper = { attrs, body ->
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/gridWrapper", model:[gridVals:attrs, body:body])
+    }
     /**
      * Generates the required javascript and html for jqGrid
      * -- attrs.id : The id of the wrapper, grid and pager
@@ -42,7 +59,6 @@ class JQGridTagLib {
     def grid = { attrs, body ->
         // Set default values
         def gridVals = attrs
-        gridVals.createHolder    = attrs.remove('createHolder') ?: true
         gridVals.caption         = attrs.remove('caption') ?: ''
         gridVals.hideGrid        = attrs.remove('hideGrid') ?: true
         gridVals.resizeOffset    = attrs.remove('resizeOffset') ?: -2
@@ -69,11 +85,6 @@ class JQGridTagLib {
         gridVals.standardDeleteButton  = attrs.remove('standardDeleteButton') ?: false
         gridVals.standardSearchButton  = attrs.remove('standardSearchButton') ?: false
         gridVals.standardRefreshButton = attrs.remove('standardRefreshButton') ?: true
-
-        // Write out the table
-        if (gridVals.createHolder.toBoolean()) {
-            out << render(template:"${pluginContextPath}/grails-app/views/templates/gridWrapper", model:[gridVals:gridVals])
-        }
 
         // Write out the grid javascript
         out << render(template:"${pluginContextPath}/grails-app/views/templates/grid", model:[gridVals:gridVals, body:body])

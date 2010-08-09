@@ -6,6 +6,8 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'author.label', default: 'Author')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
+        <jqgrid:cssResources />
+        
         <jq:resources />
         <jqui:resources />
         <jqgrid:resources />
@@ -18,6 +20,36 @@
               }
           }
         </script>
+
+        <jqgrid:grid
+            id="author"
+            listUrl="${createLink(action: 'listJSON')}"
+            editUrl="${createLink(action: 'editJSON')}"
+            colNames="'Firstname', 'Lastname', 'id'"
+            colModel="{name:'firstName', editable: true},
+                      {name:'lastName', editable: true},
+                      {name:'id', hidden: true}"
+            sortName="lastName"
+            caption="${entityName} List"
+            height="300"
+            filterToolBar="true"
+            onDblClickRow="onDblClickRow">
+
+            <jqgrid:deleteButton
+                id="author"
+                url="${createLink(action: 'editJSON')}" />
+
+            <jqgrid:editButton
+                id="author"
+                url="${createLink(action: 'edit')}" />
+
+            <jqgrid:addButton
+                id="author"
+                url="${createLink(action: 'create')}" />
+
+            <jqgrid:searchButton id="author" />
+
+        </jqgrid:grid>
     </head>
     <body>
         <div class="nav">
@@ -30,37 +62,7 @@
               <div class="message">${flash.message}</div>
             </g:if>
 
-            <jqgrid:grid
-                id="author"
-                createHolder="true"
-                listUrl="${createLink(action: 'listJSON')}"
-                editUrl="${createLink(action: 'editJSON')}"
-                colNames="'Firstname', 'Lastname', 'id'"
-                colModel="{name:'firstName', editable: true},
-                          {name:'lastName', editable: true},
-                          {name:'id', hidden: true}"
-                sortName="lastName"
-                caption="Author List"
-                height="300"
-                filterToolBar="true"
-                onDblClickRow="onDblClickRow"
-                deleteButton="true">
-
-                <jqgrid:deleteButton
-                    id="author"
-                    url="${createLink(action: 'editJSON')}" />
-
-                <jqgrid:editButton
-                    id="author"
-                    url="${createLink(action: 'edit')}" />
-
-                <jqgrid:addButton
-                    id="author"
-                    url="${createLink(action: 'create')}" />
-
-                <jqgrid:searchButton id="author" />
-                
-            </jqgrid:grid>
+            <jqgrid:wrapper id="author" />
         </div>
     </body>
 </html>

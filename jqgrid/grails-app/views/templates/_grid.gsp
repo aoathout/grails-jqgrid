@@ -20,7 +20,6 @@
                caption: '${gridVals.caption}',
                hidegrid: ${gridVals.hideGrid},
                pager: jQuery('#${gridVals.id}GridPager')
-
           // Handlers
           <g:if test="${gridVals.onDblClickRow}">
                ,ondblClickRow: ${gridVals.onDblClickRow}

@@ -12,8 +12,50 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-	    <nature>com.springsource.sts.grails.core.nature</nature>
+		<nature>com.springsource.sts.grails.core.nature</nature>
 		<nature>org.eclipse.jdt.groovy.core.groovyNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>jquery-1.4.2.5-grails-app-conf</name>
+			<type>2</type>
+			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/conf</location>
+		</link>
+		<link>
+			<name>jquery-1.4.2.5-grails-app-i18n</name>
+			<type>2</type>
+			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/i18n</location>
+		</link>
+		<link>
+			<name>jquery-1.4.2.5-grails-app-services</name>
+			<type>2</type>
+			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/services</location>
+		</link>
+		<link>
+			<name>jquery-1.4.2.5-grails-app-taglib</name>
+			<type>2</type>
+			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/taglib</location>
+		</link>
+		<link>
+			<name>jquery-1.4.2.5-src-groovy</name>
+			<type>2</type>
+			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/src/groovy</location>
+		</link>
+		<link>
+			<name>jquery-ui-1.8.2.4-grails-app-i18n</name>
+			<type>2</type>
+			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-ui-1.8.2.4/grails-app/i18n</location>
+		</link>
+		<link>
+			<name>jquery-ui-1.8.2.4-grails-app-taglib</name>
+			<type>2</type>
+			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-ui-1.8.2.4/grails-app/taglib</location>
+		</link>
+		<link>
+			<name>tomcat-1.3.4-src-groovy</name>
+			<type>2</type>
+			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/tomcat-1.3.4/src/groovy</location>
+		</link>
+	</linkedResources>
 </projectDescription>

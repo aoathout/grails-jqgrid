@@ -1,1 +1,0 @@
-<link rel="stylesheet" href="${resource(dir: pluginContextPath, file: 'css/jqgrid/ui.jqgrid.css')}" type="text/css" media="screen" />

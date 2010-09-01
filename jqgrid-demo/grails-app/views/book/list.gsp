@@ -1,10 +1,8 @@
-
-<%@ page import="jqgrid.demo.Author" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'author.label', default: 'Author')}" />
+        <g:set var="entityName" value="${message(code: 'book.label', default: 'Book')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
         <jqgrid:cssResources />
         
@@ -22,34 +20,34 @@
         </script>
 
         <jqgrid:grid
-            id="author"
+            id="book"
             listUrl="${createLink(action: 'listJSON')}"
             editUrl="${createLink(action: 'editJSON')}"
-            colNames="'Firstname', 'Lastname', 'Books', 'id'"
-            colModel="{name:'firstName', editable: true},
-                      {name:'lastName', editable: true},
-                      {name:'books', editable: true, sortable: false},
+            colNames="'Title', 'ISBN', 'id'"
+            colModel="{name:'title', editable: true},
+                      {name:'isbn', editable: true},
                       {name:'id', hidden: true}"
-            sortName="lastName"
+            sortName="title"
             caption="${entityName} List"
             height="300"
-            filterToolBar="true"
             viewRecords="true"
+            filterToolBar="true"
+            searchOnEnter="false"            
             onDblClickRow="onDblClickRow">
 
             <jqgrid:deleteButton
-                id="author"
+                id="book"
                 url="${createLink(action: 'editJSON')}" />
 
             <jqgrid:editButton
-                id="author"
+                id="book"
                 url="${createLink(action: 'edit')}" />
 
             <jqgrid:addButton
-                id="author"
+                id="book"
                 url="${createLink(action: 'create')}" />
 
-            <jqgrid:searchButton id="author" />
+            <jqgrid:searchButton id="book" />
 
         </jqgrid:grid>
     </head>
@@ -64,7 +62,7 @@
               <div class="message">${flash.message}</div>
             </g:if>
 
-            <jqgrid:wrapper id="author" />
+            <jqgrid:wrapper id="book" />
         </div>
     </body>
 </html>

@@ -79,8 +79,15 @@ class AuthorController {
 
             if (params.isbn)
                 ilike('isbn', '%' + params.isbn + '%')
+				
+			if (params.books) {
+				books {
+					ilike('title', '%' + params.books + '%')
+				}
+			}
 
             order(sortIndex, sortOrder).ignoreCase()
+			//resultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY)
         }
 
         def totalRows = authors.totalCount
@@ -90,7 +97,8 @@ class AuthorController {
             [
              	cell: [ 
                     it.firstName,
-                    it.lastName
+                    it.lastName,
+					it.books*.title
                 ],
              	id: it.id
             ]

@@ -1,0 +1,9 @@
+# Can ignore specific files / Directories
+.DS_Store
+target
+
+# Don't include class files or logs
+*.class
+*.log
+*.trace
+**/*.class

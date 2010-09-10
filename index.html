@@ -64,6 +64,12 @@
       Grails JqGrid Plugin
     </div>
 
+	<p>
+		I have got things to the point where they are usable for most requirements. There are still things todo like master/detail, etc. but 
+		I'll get to them soon. I am in the process of getting the plugin up on the main Grails plugin page and into the main Grails plugin 
+		svn so you all that is needed to install things is: 'grails install-plugin jqgrid'. I need to finish the documentation for the main
+		Grails plugin page (examples, release notes, etc.) Once that is done I will update this site with details. Since I prefer Git over 
+		SVN I will still maintain the code here. Thanks to everybody that provided feedback. Like always, Please feel free to contribute.
     <p>
 This project will provide a grails taglib for the <a href="http://www.trirand.com/blog">JQGrid</a> JQuery component.
     </p>
@@ -76,19 +82,10 @@ This project will provide a grails taglib for the <a href="http://www.trirand.co
     </ul>
 There are two projects for this plugin. One is the plugin code itself, the other is a demo app that shows how to use the taglib. 
 <br /><br />
-To run the demo app you must first package the plugin.
-<pre>
-cd grails-jqgrid/jqgrid
-grails package-plugin
-</pre>
-Then in the demo application you must install the plugin (uninstalling any previous versions)
-<pre>
-cd grails-jqgrid/jqgrid-demo
-grails uninstall-plugin jqgrid
-grails install-plugin ../jqgrid/grails-jqgrid*.zip
-</pre>
-At this point you should be able to launch the application. If you navigate to the AuthorController you can view the list page as a jqgrid.
-<ep>
+
+<div style="font-style: italic;">
+** You no longer have to build or package the plugin. The demo app now uses inline plugin directives in Config.groovy. **
+</div>
 
 <h2>Dependencies</h2>
 <p>

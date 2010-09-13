@@ -17,39 +17,41 @@
                   $(location).attr('href', url + "/" + id);
               }
           }
-        </script>
 
-        <jqgrid:grid
-            id="book"
-            listUrl="${createLink(action: 'listJSON')}"
-            editUrl="${createLink(action: 'editJSON')}"
-            colNames="'Title', 'ISBN', 'id'"
-            colModel="{name:'title', editable: true},
-                      {name:'isbn', editable: true},
-                      {name:'id', hidden: true}"
-            sortName="title"
-            caption="${entityName} List"
-            height="300"
-            viewRecords="true"
-            filterToolBar="true"
-            searchOnEnter="false"            
-            onDblClickRow="onDblClickRow">
+          $(document).ready(function () {
+	        <jqgrid:grid
+	            id="book"
+	            listUrl="${createLink(action: 'listJSON')}"
+	            editUrl="${createLink(action: 'editJSON')}"
+	            colNames="'Title', 'ISBN', 'id'"
+	            colModel="{name:'title', editable: true},
+	                      {name:'isbn', editable: true},
+	                      {name:'id', hidden: true}"
+	            sortName="title"
+	            caption="${entityName} List"
+	            height="300"
+	            viewRecords="true"
+	            filterToolBar="true"
+	            searchOnEnter="false"            
+	            onDblClickRow="onDblClickRow">
+	
+	            <jqgrid:deleteButton
+	                id="book"
+	                url="${createLink(action: 'editJSON')}" />
+	
+	            <jqgrid:editButton
+	                id="book"
+	                url="${createLink(action: 'edit')}" />
+	
+	            <jqgrid:addButton
+	                id="book"
+	                url="${createLink(action: 'create')}" />
+	
+	            <jqgrid:searchButton id="book" />
 
-            <jqgrid:deleteButton
-                id="book"
-                url="${createLink(action: 'editJSON')}" />
-
-            <jqgrid:editButton
-                id="book"
-                url="${createLink(action: 'edit')}" />
-
-            <jqgrid:addButton
-                id="book"
-                url="${createLink(action: 'create')}" />
-
-            <jqgrid:searchButton id="book" />
-
-        </jqgrid:grid>
+	        </jqgrid:grid>
+          });
+          </script>
     </head>
     <body>
         <div class="nav">

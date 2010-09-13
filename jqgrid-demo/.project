@@ -68,41 +68,6 @@
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/src/java</location>
 		</link>
 		<link>
-			<name>jquery-1.4.2.5-grails-app-conf</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/conf</location>
-		</link>
-		<link>
-			<name>jquery-1.4.2.5-grails-app-i18n</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/i18n</location>
-		</link>
-		<link>
-			<name>jquery-1.4.2.5-grails-app-services</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/services</location>
-		</link>
-		<link>
-			<name>jquery-1.4.2.5-grails-app-taglib</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/taglib</location>
-		</link>
-		<link>
-			<name>jquery-1.4.2.5-src-groovy</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/src/groovy</location>
-		</link>
-		<link>
-			<name>jquery-ui-1.8.2.4-grails-app-i18n</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-ui-1.8.2.4/grails-app/i18n</location>
-		</link>
-		<link>
-			<name>jquery-ui-1.8.2.4-grails-app-taglib</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-ui-1.8.2.4/grails-app/taglib</location>
-		</link>
-		<link>
 			<name>src-1</name>
 			<type>2</type>
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/utils</location>
@@ -261,11 +226,6 @@
 			<name>src-9</name>
 			<type>2</type>
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/views</location>
-		</link>
-		<link>
-			<name>tomcat-1.3.4-src-groovy</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/tomcat-1.3.4/src/groovy</location>
 		</link>
 	</linkedResources>
 </projectDescription>

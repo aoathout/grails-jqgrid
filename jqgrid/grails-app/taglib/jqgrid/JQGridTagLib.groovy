@@ -26,7 +26,9 @@ class JQGridTagLib {
     }
 
     def wrapper = { attrs, body ->
-        out << render(template:"${pluginContextPath}/grails-app/views/templates/gridWrapper", model:[gridVals:attrs, body:body])
+		def gridVals = attrs
+		gridVals.showPager = attrs.remove('showPager') ?: true
+        out << render(template:"${pluginContextPath}/grails-app/views/templates/gridWrapper", model:[gridVals:gridVals, body:body])
     }
     /**
      * Generates the required javascript and html for jqGrid
@@ -55,6 +57,7 @@ class JQGridTagLib {
      * -- attrs.viewRecords : true to show the beginning and ending record numbers
      * -- attrs.gridView : true to use speed improvement, there are some limitations
      *                     Check the jqgrid documentation for details
+     * -- attrs.showPger : true to show pager, false to hide 
      */
     def grid = { attrs, body ->
         // Set default values
@@ -78,7 +81,8 @@ class JQGridTagLib {
         gridVals.filterToolBar   = attrs.remove('filterToolBar') ?: false
         gridVals.searchOnEnter   = attrs.remove('searchOnEnter') ?: true
         gridVals.cellEdit        = attrs.remove('cellEdit') ?: false
-
+		gridVals.showPager		 = attrs.remove('showPager') ?: true
+		
         // Standard grid nav bar buttons
         gridVals.standardAddButton     = attrs.remove('standardAddButton') ?: false
         gridVals.standardEditButton    = attrs.remove('standardEditButton') ?: false

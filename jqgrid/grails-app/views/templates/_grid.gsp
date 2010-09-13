@@ -16,8 +16,10 @@
           gridview: ${gridVals.gridView.toBoolean()},
           cellEdit: ${gridVals.cellEdit.toBoolean()},
           caption: '${gridVals.caption}',
-          hidegrid: ${gridVals.hideGrid},
-          pager: jQuery('#${gridVals.id}GridPager')
+          hidegrid: ${gridVals.hideGrid}
+         <g:if test="${gridVals.showPager}">
+         	, pager: jQuery('#${gridVals.id}GridPager')
+         </g:if>
      	 
      	 // Handlers
 	     <g:if test="${gridVals.onDblClickRow}">
@@ -45,15 +47,16 @@
    // End jqgrid script
    });
 
-   // Navigation Bar
-   $('#${gridVals.id}Grid').navGrid('#${gridVals.id}GridPager', {
-       add: ${gridVals.standardAddButton},
-       edit: ${gridVals.standardEditButton},
-       del: ${gridVals.standardDeleteButton},
-       search: ${gridVals.standardSearchButton},
-       refresh: ${gridVals.standardRefreshButton}
-   });
-
+	<g:if test="${gridVals.showPager}">
+	   // Navigation Bar
+	   $('#${gridVals.id}Grid').navGrid('#${gridVals.id}GridPager', {
+	       add: ${gridVals.standardAddButton},
+	       edit: ${gridVals.standardEditButton},
+	       del: ${gridVals.standardDeleteButton},
+	       search: ${gridVals.standardSearchButton},
+	       refresh: ${gridVals.standardRefreshButton}
+	   });
+	</g:if>
    // Deal with fiter toolbar if requested
    <g:if test="${gridVals.filterToolBar.toBoolean()}">
        <g:render template="/templates/filterToolBar" plugin="jqgrid" model="[gridVals:gridVals]" />

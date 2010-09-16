@@ -63,3 +63,5 @@
    </g:if>
 
    ${body()}
+   
+   <g:render template="/templates/resize" plugin="jqgrid" model="[gridVals:gridVals]" />

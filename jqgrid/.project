@@ -53,49 +53,14 @@
 			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-ui-1.8.2.4/grails-app/taglib</location>
 		</link>
 		<link>
-			<name>src-10</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/tomcat-1.3.4/src/groovy</location>
-		</link>
-		<link>
-			<name>src-11</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/src/groovy</location>
-		</link>
-		<link>
-			<name>src-13</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/tomcat-1.3.4/src/groovy</location>
-		</link>
-		<link>
 			<name>src-15</name>
 			<type>2</type>
 			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/conf</location>
 		</link>
 		<link>
-			<name>src-16</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/src/groovy</location>
-		</link>
-		<link>
-			<name>src-2</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/i18n</location>
-		</link>
-		<link>
-			<name>src-20</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-ui-1.8.2.4/grails-app/i18n</location>
-		</link>
-		<link>
 			<name>src-22</name>
 			<type>2</type>
 			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/conf</location>
-		</link>
-		<link>
-			<name>src-26</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-ui-1.8.2.4/grails-app/i18n</location>
 		</link>
 		<link>
 			<name>src-6</name>

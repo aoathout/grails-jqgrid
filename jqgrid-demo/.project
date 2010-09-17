@@ -68,26 +68,6 @@
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/src/java</location>
 		</link>
 		<link>
-			<name>src-1</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/utils</location>
-		</link>
-		<link>
-			<name>src-10</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/views</location>
-		</link>
-		<link>
-			<name>src-11</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/src/groovy</location>
-		</link>
-		<link>
-			<name>src-12</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/src/groovy</location>
-		</link>
-		<link>
 			<name>src-14</name>
 			<type>2</type>
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/controllers</location>
@@ -96,11 +76,6 @@
 			<name>src-16</name>
 			<type>2</type>
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/controllers</location>
-		</link>
-		<link>
-			<name>src-2</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/tomcat-1.3.4/src/groovy</location>
 		</link>
 		<link>
 			<name>src-20</name>
@@ -113,24 +88,9 @@
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/taglib</location>
 		</link>
 		<link>
-			<name>src-26</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/src/java</location>
-		</link>
-		<link>
-			<name>src-28</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/src/java</location>
-		</link>
-		<link>
 			<name>src-29</name>
 			<type>2</type>
 			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/taglib</location>
-		</link>
-		<link>
-			<name>src-3</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/i18n</location>
 		</link>
 		<link>
 			<name>src-30</name>
@@ -153,11 +113,6 @@
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/conf</location>
 		</link>
 		<link>
-			<name>src-36</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/i18n</location>
-		</link>
-		<link>
 			<name>src-38</name>
 			<type>2</type>
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/services</location>
@@ -166,16 +121,6 @@
 			<name>src-39</name>
 			<type>2</type>
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/domain</location>
-		</link>
-		<link>
-			<name>src-4</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/src/groovy</location>
-		</link>
-		<link>
-			<name>src-41</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/i18n</location>
 		</link>
 		<link>
 			<name>src-42</name>
@@ -191,16 +136,6 @@
 			<name>src-44</name>
 			<type>2</type>
 			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/conf</location>
-		</link>
-		<link>
-			<name>src-45</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-ui-1.8.2.4/grails-app/i18n</location>
-		</link>
-		<link>
-			<name>src-46</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-ui-1.8.2.4/grails-app/i18n</location>
 		</link>
 		<link>
 			<name>src-5</name>
@@ -221,11 +156,6 @@
 			<name>src-8</name>
 			<type>2</type>
 			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/services</location>
-		</link>
-		<link>
-			<name>src-9</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/views</location>
 		</link>
 	</linkedResources>
 </projectDescription>

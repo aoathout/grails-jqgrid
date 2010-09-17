@@ -6,6 +6,11 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
+			<name>org.eclipse.wst.common.project.facet.core.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
 			</arguments>
@@ -15,6 +20,7 @@
 		<nature>com.springsource.sts.grails.core.nature</nature>
 		<nature>org.eclipse.jdt.groovy.core.groovyNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 	</natures>
 	<linkedResources>
 		<link>
@@ -66,96 +72,6 @@
 			<name>jqgrid-src-java</name>
 			<type>2</type>
 			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/src/java</location>
-		</link>
-		<link>
-			<name>src-14</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/controllers</location>
-		</link>
-		<link>
-			<name>src-16</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/controllers</location>
-		</link>
-		<link>
-			<name>src-20</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/taglib</location>
-		</link>
-		<link>
-			<name>src-24</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/taglib</location>
-		</link>
-		<link>
-			<name>src-29</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/taglib</location>
-		</link>
-		<link>
-			<name>src-30</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/taglib</location>
-		</link>
-		<link>
-			<name>src-31</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/conf</location>
-		</link>
-		<link>
-			<name>src-33</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/services</location>
-		</link>
-		<link>
-			<name>src-34</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/conf</location>
-		</link>
-		<link>
-			<name>src-38</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/services</location>
-		</link>
-		<link>
-			<name>src-39</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/domain</location>
-		</link>
-		<link>
-			<name>src-42</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/conf</location>
-		</link>
-		<link>
-			<name>src-43</name>
-			<type>2</type>
-			<location>/Users/aoathout/Development/Projects/Grails/grails-jqgrid/jqgrid/grails-app/domain</location>
-		</link>
-		<link>
-			<name>src-44</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/conf</location>
-		</link>
-		<link>
-			<name>src-5</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-ui-1.8.2.4/grails-app/taglib</location>
-		</link>
-		<link>
-			<name>src-6</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-ui-1.8.2.4/grails-app/taglib</location>
-		</link>
-		<link>
-			<name>src-7</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/services</location>
-		</link>
-		<link>
-			<name>src-8</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid-demo/plugins/jquery-1.4.2.5/grails-app/services</location>
 		</link>
 	</linkedResources>
 </projectDescription>

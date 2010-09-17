@@ -2,7 +2,7 @@ class JqgridGrailsPlugin {
     // the plugin version (Relates to version of jqgrid being used)
     def version = "3.7.2"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "1.3.3 > *"
+    def grailsVersion = "1.3.4 > *"
     // the other plugins this plugin depends on
     def dependsOn = ['jqueryUi': "1.8.2.4 > *"]
     // resources that are excluded from plugin packaging

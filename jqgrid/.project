@@ -6,6 +6,11 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
+			<name>org.eclipse.wst.common.project.facet.core.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
 			</arguments>
@@ -15,6 +20,7 @@
 		<nature>com.springsource.sts.grails.core.nature</nature>
 		<nature>org.eclipse.jdt.groovy.core.groovyNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 	</natures>
 	<linkedResources>
 		<link>
@@ -51,31 +57,6 @@
 			<name>jquery-ui-1.8.2.4-grails-app-taglib</name>
 			<type>2</type>
 			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-ui-1.8.2.4/grails-app/taglib</location>
-		</link>
-		<link>
-			<name>src-15</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/conf</location>
-		</link>
-		<link>
-			<name>src-22</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/conf</location>
-		</link>
-		<link>
-			<name>src-6</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/services</location>
-		</link>
-		<link>
-			<name>src-7</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/taglib</location>
-		</link>
-		<link>
-			<name>src-8</name>
-			<type>2</type>
-			<location>/Users/aoathout/.grails/1.3.4/projects/jqgrid/plugins/jquery-1.4.2.5/grails-app/taglib</location>
 		</link>
 		<link>
 			<name>tomcat-1.3.4-src-groovy</name>
